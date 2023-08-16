@@ -1,1 +1,41 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Roboto:wght@400;500;700;900&display=swap');
+
+*{
+    font-family: 'montserrat', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    box-sizing: border-box;
+    background: url(./assets/background.jpg) no-repeat center;
+    background-size: cover;
+}
+
+mat-snack-bar-container.success {
+    --mdc-snackbar-container-color: lightgreen;
+    --mdc-snackbar-supporting-text-size: 18px;
+    --mdc-snackbar-supporting-text-weight: 500;
+    --mdc-snackbar-supporting-text-color: black
+}
+
+mat-snack-bar-container.error {
+    --mdc-snackbar-container-color: red;
+    --mdc-snackbar-supporting-text-size: 20px;
+    --mdc-snackbar-supporting-text-weight: 500;
+}
+
+.mat-mdc-text-field-wrapper.mdc-text-field .mat-mdc-form-field-infix {
+    min-height: 0;
+    padding-top: 15px;
+    padding-bottom: 12px;
+}
+
+.mat-mdc-form-field-bottom-align::before {
+    height: 12px !important;
+}
+
+.mat-mdc-raised-button {
+    min-height: 42px;
+}

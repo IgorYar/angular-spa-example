@@ -1,0 +1,61 @@
+<div class="card-container">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>РЕГИСТРАЦИЯ</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="registerForm" id='regForm'>  
+                <mat-form-field>
+                    <mat-label>Имя</mat-label>
+                    <input formControlName="firstName" matInput placeholder="Введите Имя" required>
+                    <mat-error *ngIf="registerForm.controls['firstName'].hasError('required')">{{firstNameRequiredErrorMessage}}</mat-error>
+                    <mat-error *ngIf="registerForm.controls['firstName'].hasError('pattern')">{{namesAllowedSymbolsErrorMessage}}</mat-error>
+                    <mat-error *ngIf="registerForm.controls['firstName'].hasError('maxlength')">{{firstNameMaxLengthErrorMessage}}</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Фамилия</mat-label>
+                    <input formControlName="lastName" matInput placeholder="Введите Фамилию" required>
+                    <mat-error *ngIf="registerForm.controls['lastName'].hasError('required')">{{lastNameRequiredErrorMessage}}</mat-error>
+                    <mat-error *ngIf="registerForm.controls['lastName'].hasError('pattern')">{{namesAllowedSymbolsErrorMessage}}</mat-error>
+                    <mat-error *ngIf="registerForm.controls['lastName'].hasError('maxlength')">{{lastNameMaxLengthErrorMessage}}</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input formControlName="email" matInput type="email" placeholder="Введите Email" required>
+                    <mat-error *ngIf="registerForm.controls['email'].hasError('required')">{{emailRequiredErrorMessage}}</mat-error>
+                    <mat-error *ngIf="registerForm.controls['email'].hasError('email')">{{emailInvalidErrorMessage}}</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Пароль</mat-label>
+                    <input formControlName="password" matInput [type]="hidePassword ? 'password' : 'text'" placeholder="Введите пароль">
+                    <mat-icon (click)="hidePassword = !hidePassword" matSuffix>{{ hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>                
+                    <mat-error *ngIf="registerForm.controls['password'].hasError('required')">{{passwordRequiredErrorMessage}}</mat-error>
+                    <mat-error *ngIf="registerForm.controls['password'].hasError('minlength')">{{passwordMinLengthErrorMessage}}</mat-error>
+                    <mat-error *ngIf="registerForm.controls['password'].hasError('pattern')">{{passwordInvalidErrorMessage}}</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Подтверждение пароля</mat-label>
+                    <input formControlName="confirmPassword" matInput [type]="hideConfirmPassword ? 'password' : 'text'" placeholder="Подтвердите пароль">
+                    <mat-icon (click)="hideConfirmPassword = !hideConfirmPassword" matSuffix>{{ hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>                
+                    <mat-error *ngIf="registerForm.controls['confirmPassword'].hasError('required')">{{confirmPasswordRequiredErrorMessage}}</mat-error>
+                    <mat-error *ngIf="registerForm.controls['password'] !== registerForm.controls['confirmPassword']">{{confirmPasswordNotMatchErrorMessage}}</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Дата рождения</mat-label>
+                    <input 
+                        formControlName="birthDate"
+                        matInput
+                        [max]="maxBirthDate"
+                        [matDatepicker]="picker"
+                        placeholder="Выберите дату"
+                    >
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="registerForm.controls['birthDate'].hasError('required')">{{birthDateRequiredErrorMessage}}</mat-error>
+                    <mat-error *ngIf="registerForm.controls['birthDate'].hasError('matDatepickerMax')">{{birthDateNotAllowedErrorMessage}}</mat-error>
+                </mat-form-field>
+            </form>
+            <button (click)="submitRegister()" mat-raised-button type="submit" color="primary">ОТПРАВИТЬ</button>
+        </mat-card-content>
+    </mat-card>
+</div>

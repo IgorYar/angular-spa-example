@@ -1,0 +1,61 @@
+.card-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mdc-card {
+    border: 1px solid black;
+    border-radius: 20px;
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    align-items: center;
+}
+
+mat-card-header {
+    width: 100%;
+    padding: 2% 0;
+    background-color: #2196f3;
+    justify-content: center;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+}
+
+mat-card-title {
+    margin: 2%;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+}
+
+mat-card-content {
+    margin: 8% 8% 4%;
+    padding: 0;
+}
+
+#loginForm {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 26px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+mat-label {
+    font-size: x-large;
+}
+
+button {
+    margin-top: 8%;
+    width: 100%;
+    font-size: large;
+    font-weight: 600;
+}
+
+mat-error {
+    font-size: small;
+}

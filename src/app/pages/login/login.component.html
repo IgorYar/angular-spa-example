@@ -1,0 +1,26 @@
+<div class="card-container">
+    <mat-card class="my-card">
+        <mat-card-header>
+            <mat-card-title>АВТОРИЗАЦИЯ</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form [formGroup]="loginForm" id="loginForm">
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input formControlName="email" matInput type="email" placeholder="Введите Email" required>
+                    <mat-error *ngIf="loginForm.controls['email'].hasError('required')">{{emailRequiredErrorMessage}}</mat-error>
+                    <mat-error *ngIf="loginForm.controls['email'].hasError('email')">{{emailInvalidErrorMessage}}</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input formControlName="password" matInput [type]="hidePassword ? 'password' : 'text'" placeholder="Введите пароль" name="password">
+                    <mat-icon (click)="hidePassword = !hidePassword" matSuffix>{{ hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <mat-error *ngIf="loginForm.controls['password'].hasError('required')">{{passwordRequiredErrorMessage}}</mat-error>
+                    <mat-error *ngIf="loginForm.controls['password'].hasError('minlength')">{{passwordMinLengthErrorMessage}}</mat-error>
+                    <mat-error *ngIf="loginForm.controls['password'].hasError('pattern')">{{passwordInvalidErrorMessage}}</mat-error>
+                </mat-form-field>
+            </form>
+            <button (click)="submitLogin()" type="submit" mat-raised-button color="primary">АВТОРИЗОВАТЬСЯ</button>
+        </mat-card-content>
+    </mat-card>
+</div>

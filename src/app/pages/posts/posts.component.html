@@ -1,0 +1,79 @@
+<mat-card>
+    <mat-card-title>Список постов</mat-card-title>
+    <mat-card-header>
+        <mat-form-field class="filter-form">
+            <mat-label>Фильтр по тексту</mat-label>
+            <input matInput (keyup)="applyfilter($event)" placeholder="Введите текст"/>
+        </mat-form-field>
+        <button 
+            mat-raised-button 
+            (click)="addRow()" 
+            id="add-post-btn"
+        >
+            Добавить пост
+        </button>
+    </mat-card-header>
+    <mat-card-content>
+        <table mat-table [dataSource]="dataSource">
+            <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
+                <th mat-header-cell *matHeaderCellDef [ngSwitch]="col.key">
+                    <span *ngSwitchDefault>{{col.label}}</span>
+                </th>
+                <td mat-cell *matCellDef="let element">
+                    <div [ngSwitch]="col.type" *ngIf="!element.isEdit">
+                        <div class="actions-container" *ngSwitchCase="'isEdit'">
+                            <button
+                                mat-raised-button
+                                color="primary"
+                                (click)="editRow(element)"
+                            >
+                                Редактировать
+                            </button>
+                            <button
+                                mat-raised-button
+                                color="warn"
+                                (click)="removeRow(element.id)"
+                            >
+                                Удалить
+                            </button>
+                        </div>
+                        <span *ngSwitchDefault>{{element[col.key]}}</span>
+                    </div>
+                    <div [ngSwitch]="col.type" *ngIf="element.isEdit">
+                        <span *ngSwitchDefault>{{element[col.key]}}</span>
+                        <div class="save-btn-container" *ngSwitchCase="'isEdit'">
+                            <button 
+                                mat-raised-button
+                                (click)="saveRow(element)"
+                                color="accent"
+                            >
+                                Сохранить
+                            </button>
+                            <button
+                                mat-raised-button
+                                color="warn"
+                                (click)="removeRow(element.id)"
+                            >
+                                Удалить
+                            </button>
+                        </div>
+                        <mat-form-field class="form-input" *ngSwitchCase="'text'">
+                            <input
+                                matInput
+                                [type]="col.type"
+                                [(ngModel)]="element[col.key]"
+                                [required]="col.required"
+                                [maxlength]=300
+                            />
+                        </mat-form-field>
+                    </div>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+    </mat-card-content>
+    <mat-card-footer>
+        <mat-paginator [pageSizeOptions]="[10]" showFirstLastButtons></mat-paginator>
+    </mat-card-footer>
+</mat-card>

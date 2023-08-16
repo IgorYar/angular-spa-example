@@ -1,0 +1,92 @@
+mat-card {
+    margin: 3%;
+    border: 1px solid black;
+}
+
+mat-card-title {
+    margin-bottom: 1%;
+    width: 100%;
+    padding: 0.6% 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+    background-color: #2196f3;
+    color: white;
+}
+
+mat-card-content {
+    margin-bottom: 1%;
+}
+
+mat-card-header {
+    padding: 0.2% 2.7%;
+    gap: 2%;
+}
+
+.filter-form {
+    width: 100%;
+}
+
+mat-label {
+    font-size: larger;
+}
+
+#add-post-btn {
+    max-width: 135px ;
+    width: 100%;
+    background-color: lightgreen;
+}
+
+table {
+    border: 1px solid lightgray;
+}
+
+th {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: large;
+    font-weight: bold;
+}
+
+td, input {
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: small;
+}
+
+.form-input {
+    width: 100%;
+}
+
+mat-paginator {
+    font-weight: 500;
+    background-color: lightgray;
+}
+
+.mat-mdc-raised-button {
+    width: 120px;
+    font-size: small;
+    word-break: normal
+}
+
+[mat-header-row] {
+    background-color: lightgray;
+}
+
+[mat-row] {
+    height: 6.44vh;
+}
+
+[mat-row]:nth-child(even) {
+    background-color: rgb(231, 241, 241);
+}
+
+.actions-container, .save-btn-container {
+    min-width: 15vw;
+    display: flex;
+    justify-content: right;
+    gap: 4%;
+}
